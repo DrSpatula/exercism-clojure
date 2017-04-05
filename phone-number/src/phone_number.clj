@@ -23,5 +23,13 @@
   [pn]
   (-> pn 
       number 
-      (partial take 3)
-      (partial apply str)))
+      (subs 0 3)))
+
+(defn pretty-print
+  "Returns a nicely formatted phone number string"
+  [pn]
+  (let [phnum (number pn)
+        ac (area-code pn)
+        start (subs phnum 3 6)
+        end (subs phnum 6)]
+    (str "(" ac ") " start "-" end)))
